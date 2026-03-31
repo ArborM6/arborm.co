@@ -23,6 +23,12 @@ const content = {
         note: "愿我们每个人都能成为更丰富的自己。",
         year: "2026  即将上线",
       },
+      app2: {
+        name: "为你",
+        tagline: "这是专属于你的小小世界",
+        description: "目前正在全力开发中",
+        year: "2027  敬请期待",
+      },
     },
     contact: {
       title: "联系",
@@ -51,6 +57,12 @@ const content = {
         note: "May each of us become a richer self.",
         year: "2026  Coming Soon",
       },
+      app2: {
+        name: "For You",
+        tagline: "A tiny world just for you",
+        description: "Currently under active development",
+        year: "2027  Stay Tuned",
+      },
     },
     contact: {
       title: "Contact",
@@ -58,7 +70,7 @@ const content = {
     },
     footer: {
       copyright: "2026 Hefei ArborM Technology Co., Ltd. All rights reserved",
-      icp: "ICP: 皖ICP备2026007885号",
+      icp: "ICP License: Wan ICP No. 2026007885",
     },
   },
 }
@@ -152,7 +164,7 @@ export default function Home() {
 
       {/* Work - 紧凑的作品展示 */}
       <section id="work" className="max-w-4xl mx-auto px-6 md:px-12 py-12 border-t border-border">
-        <h2 className="text-2xl md:text-3xl font-light text-center mb-8">{t.work.title}</h2>
+        <h2 className="text-2xl md:text-3xl font-light text-center mb-8 tracking-[0.25em]">{t.work.title}</h2>
         <div className="max-w-2xl md:max-w-3xl mx-auto">
           <div className="space-y-8">
             <div className="group cursor-pointer">
@@ -178,34 +190,57 @@ export default function Home() {
                 {t.work.app.year}
               </p>
             </div>
+
+            <div className="group cursor-pointer">
+              <div className="flex items-center gap-3 mb-3">
+                <Image 
+                  src="/foryou-icon.jpg" 
+                  alt={t.work.app2.name}
+                  width={40} 
+                  height={40} 
+                  className="rounded-[8px]"
+                />
+                <h3 className="text-2xl font-normal">{t.work.app2.name}</h3>
+                <ArrowUpRight className="w-5 h-5" />
+              </div>
+              <p className="text-lg text-foreground/80 mb-4">{t.work.app2.tagline}</p>
+              <p className="text-muted-foreground leading-relaxed text-base mb-4">
+                {t.work.app2.description}
+              </p>
+              <p className="text-muted-foreground/50 text-sm tracking-wide">
+                {t.work.app2.year}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer: Contact + Copyright */}
-      <footer id="contact" className="max-w-4xl mx-auto px-6 md:px-12 py-6 border-t border-border">
+      {/* Contact */}
+      <section id="contact" className="max-w-4xl mx-auto px-6 md:px-12 py-6 border-t border-border">
+        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <span className="font-medium text-foreground">{t.contact.title}</span>
+          <a
+            href="mailto:hello@arborm.com"
+            className="inline-flex items-center gap-1 hover:text-foreground transition-colors group"
+          >
+            <span>hello@arborm.com</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
+        </div>
+      </section>
+
+      {/* Footer: Copyright + ICP */}
+      <footer className="max-w-4xl mx-auto px-6 md:px-12 py-6 border-t border-border">
         <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <div className="flex items-center gap-4">
-            <span className="font-medium text-foreground">{t.contact.title}</span>
-            <a
-              href="mailto:hello@arborm.com"
-              className="inline-flex items-center gap-1 hover:text-foreground transition-colors group"
-            >
-              <span>hello@arborm.com</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <p>&copy; {t.footer.copyright}</p>
-            <a 
-              href="https://beian.miit.gov.cn/#/Integrated/index" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              {t.footer.icp}
-            </a>
-          </div>
+          <p>&copy; {t.footer.copyright}</p>
+          <a 
+            href="https://beian.miit.gov.cn/#/Integrated/index" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-foreground transition-colors"
+          >
+            {t.footer.icp}
+          </a>
         </div>
       </footer>
     </main>
