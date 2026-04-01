@@ -1,4 +1,5 @@
-FROM node:22-alpine AS base
+# FROM node:22-alpine AS base
+FROM registry.cn-hangzhou.aliyuncs.com/library/node:22-alpine AS base
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
