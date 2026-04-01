@@ -1,5 +1,4 @@
-# FROM node:22-alpine AS base
-FROM https://imbpby9o.mirror.aliyuncs.com/library/node:22-alpine AS base
+FROM node:22-alpine AS base
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
