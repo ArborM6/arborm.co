@@ -1,5 +1,5 @@
 # FROM node:22-alpine AS base
-FROM docker.mirrors.ustc.edu.cn/library/node:22-alpine AS base
+FROM cloudnativeapps-registry.cn-hangzhou.cr.aliyuncs.com/library/node:22-alpine AS base
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
