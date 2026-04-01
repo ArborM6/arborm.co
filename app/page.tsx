@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Mail } from "lucide-react"
 
 const content = {
   zh: {
@@ -18,21 +18,21 @@ const content = {
       title: "作品",
       app: {
         name: "独木成林",
-        tagline: "文化与艺术的小型展览",
-        description: "碎片知识并不是无用的，在未来的某一天，某一个时刻，你会想起那片飘落于你掌心的叶子。这棵树会一直陪伴你，同你一起记录时间。",
-        note: "愿我们每个人都能成为更丰富的自己。",
-        year: "2026  即将上线",
+        tagline: "让每一天都值得记录",
+        description: "愿我们每个人都能成为更丰富的自己。",
+        note: "",
+        year: "2026",
       },
       app2: {
         name: "为你",
-        tagline: "这是专属于你的小小世界",
-        description: "目前正在全力开发中",
-        year: "2027  敬请期待",
+        tagline: "一份用心准备的礼物",
+        description: "正在精心打磨中。",
+        year: "2027",
       },
     },
     contact: {
-      title: "联系",
-      tip: "如果您有任何需要，欢迎来信。",
+      title: "联系我们",
+      tip: "如果您有任何需要，欢迎来信",
     },
     footer: {
       copyright: "2026 合肥阿博木科技有限公司 版权所有",
@@ -52,21 +52,21 @@ const content = {
       title: "Work",
       app: {
         name: "One Tree Forest",
-        tagline: "A Mini Exhibition of Culture and Art",
-        description: "Fragmented knowledge is not useless. Someday, at some moment, you will remember the leaf that fell into your palm. This tree will always accompany you, recording time together.",
-        note: "May each of us become a richer self.",
-        year: "2026  Coming Soon",
+        tagline: "Make every day worth remembering",
+        description: "May each of us become a richer self.",
+        note: "",
+        year: "2026",
       },
       app2: {
         name: "For You",
-        tagline: "A tiny world just for you",
-        description: "Currently under active development",
-        year: "2027  Stay Tuned",
+        tagline: "A gift crafted with care",
+        description: "Being carefully crafted.",
+        year: "2027",
       },
     },
     contact: {
-      title: "Contact",
-      tip: "Feel free to reach out if you need anything.",
+      title: "Get in Touch",
+      tip: "Feel free to reach out if you need anything",
     },
     footer: {
       copyright: "2026 Hefei ArborM Technology Co., Ltd. All rights reserved",
@@ -87,39 +87,48 @@ export default function Home() {
   const t = content[lang]
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-white text-foreground font-[system-ui,'PingFang_SC','Noto_Sans_SC','Hiragino_Sans_GB','Microsoft_YaHei',sans-serif]">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/60 backdrop-blur-sm">
-        <nav className="grid grid-cols-3 items-center px-6 py-4 md:px-10">
-          <a href="/" className="flex flex-col">
-            <span className="text-lg font-medium tracking-wide">阿博木</span>
-            <span className="text-xs text-muted-foreground tracking-widest">ArborM</span>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/[0.04]">
+        <nav className="max-w-6xl mx-auto grid grid-cols-3 items-center px-4 py-2.5 md:px-10 md:py-4">
+          <a href="/" className="flex items-center gap-2.5">
+            <Image
+              src="/arborm-logo.png"
+              alt="ArborM Logo"
+              width={28}
+              height={40}
+              className="object-contain"
+            />
+            <div className="flex flex-col">
+              <span className="text-lg font-medium tracking-wide">阿博木</span>
+              <span className="text-[11px] text-muted-foreground tracking-[0.2em] uppercase">ArborM</span>
+            </div>
           </a>
           <div className="flex items-center justify-center gap-8">
             <button
               onClick={() => scrollToSection("work")}
-              className="text-lg font-semibold text-foreground hover:text-muted-foreground transition-colors"
+              className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
             >
               {t.nav.work}
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-lg font-semibold text-foreground hover:text-muted-foreground transition-colors"
+              className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
             >
               {t.nav.contact}
             </button>
           </div>
-          <div className="flex items-center justify-end gap-1 text-sm text-muted-foreground">
+          <div className="flex items-center justify-end gap-1.5 text-xs text-muted-foreground">
             <button
               onClick={() => setLang("zh")}
-              className={`transition-colors ${lang === "zh" ? "text-foreground" : "hover:text-foreground"}`}
+              className={`px-1.5 py-0.5 rounded transition-colors ${lang === "zh" ? "text-foreground bg-black/[0.04]" : "hover:text-foreground"}`}
             >
               中文
             </button>
-            <span>/</span>
+            <span className="text-black/20">/</span>
             <button
               onClick={() => setLang("en")}
-              className={`transition-colors ${lang === "en" ? "text-foreground" : "hover:text-foreground"}`}
+              className={`px-1.5 py-0.5 rounded transition-colors ${lang === "en" ? "text-foreground bg-black/[0.04]" : "hover:text-foreground"}`}
             >
               EN
             </button>
@@ -128,16 +137,16 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="pt-0">
+      <section className="pt-14 md:pt-16">
         <div className="w-full aspect-[2/1] relative">
           <div
             className="absolute inset-0 bg-contain bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/arborm-hero.jpg')" }}
           />
         </div>
-        <div className="max-w-4xl mx-auto w-full flex justify-end px-6 md:px-12 pt-6">
+        <div className="max-w-5xl mx-auto w-full flex justify-end px-6 md:px-12 pt-8 pb-4">
           <div className="text-right">
-            <h1 className="text-3xl md:text-4xl font-light leading-relaxed tracking-tight">
+            <h1 className="text-4xl md:text-[3.25rem] font-normal leading-[1.4] tracking-tight text-foreground/90">
               {t.hero.line1}
               <br />
               {t.hero.line2}
@@ -146,68 +155,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About - 紧跟 Hero，作为补充说明 */}
-      <section id="about" className="max-w-4xl mx-auto px-6 md:px-12 pt-12 pb-12">
-        <div className="max-w-2xl md:max-w-3xl text-left">
-          <p className="text-xl leading-relaxed mb-4">
-            <span className="text-3xl font-light">{t.about.title}</span>
-            <span>{t.about.subtitle}</span>
-          </p>
-          <p className="text-muted-foreground leading-relaxed text-base mb-4">
-            {t.about.desc1}
-          </p>
-          <p className="text-muted-foreground leading-relaxed text-base">
-            {t.about.desc2}
-          </p>
+      {/* About */}
+      <section id="about" className="bg-stone-50/70">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-20">
+          <div className="max-w-2xl md:max-w-3xl">
+            <p className="text-xl md:text-2xl leading-relaxed mb-6">
+              <span className="text-3xl md:text-4xl font-light">{t.about.title}</span>
+              <span className="text-foreground/80">{t.about.subtitle}</span>
+            </p>
+            <p className="text-foreground/50 leading-[1.8] text-base mb-5">
+              {t.about.desc1}
+            </p>
+            <p className="text-foreground/50 leading-[1.8] text-base">
+              {t.about.desc2}
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Work - 紧凑的作品展示 */}
-      <section id="work" className="max-w-4xl mx-auto px-6 md:px-12 py-12 border-t border-border">
-        <h2 className="text-2xl md:text-3xl font-light text-center mb-8 tracking-[0.25em]">{t.work.title}</h2>
-        <div className="max-w-2xl md:max-w-3xl mx-auto">
-          <div className="space-y-8">
-            <div className="group cursor-pointer">
-              <div className="flex items-center gap-3 mb-3">
-                <Image 
-                  src="/dumuchenglin-icon.jpg" 
+      {/* Work */}
+      <section id="work" className="bg-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-20">
+          <h2 className="text-2xl md:text-3xl font-light text-center mb-12 tracking-[0.25em] text-foreground/80">
+            {t.work.title}
+          </h2>
+          <div className="max-w-3xl mx-auto space-y-6">
+            {/* App 1: 独木成林 */}
+            <div className="group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <Image
+                  src="/dumuchenglin-icon.jpg"
                   alt={t.work.app.name}
-                  width={40} 
-                  height={40} 
-                  className="rounded-[8px]"
+                  width={64}
+                  height={64}
+                  className="rounded-[14px] shadow-sm"
                 />
-                <h3 className="text-2xl font-normal">{t.work.app.name}</h3>
-                <ArrowUpRight className="w-5 h-5" />
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xl md:text-2xl font-medium">{t.work.app.name}</h3>
+                    <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  </div>
+                  <p className="text-base text-foreground/60 mt-0.5">{t.work.app.tagline}</p>
+                </div>
               </div>
-              <p className="text-lg text-foreground/80 mb-4">{t.work.app.tagline}</p>
-              <p className="text-muted-foreground leading-relaxed text-base mb-2">
+              <p className="text-foreground/45 leading-[1.8] text-sm mb-2">
                 {t.work.app.description}
               </p>
-              <p className="text-muted-foreground leading-relaxed text-base mb-4">
-                {t.work.app.note}
-              </p>
-              <p className="text-muted-foreground/50 text-sm tracking-wide">
+              {t.work.app.note && (
+                <p className="text-foreground/45 leading-[1.8] text-sm mb-4">
+                  {t.work.app.note}
+                </p>
+              )}
+              <p className="text-foreground/30 text-xs tracking-widest uppercase">
                 {t.work.app.year}
               </p>
             </div>
 
-            <div className="group cursor-pointer">
-              <div className="flex items-center gap-3 mb-3">
-                <Image 
-                  src="/foryou-icon.jpg" 
+            {/* App 2: 为你 */}
+            <div className="group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <Image
+                  src="/foryou-icon.jpg"
                   alt={t.work.app2.name}
-                  width={40} 
-                  height={40} 
-                  className="rounded-[8px]"
+                  width={64}
+                  height={64}
+                  className="rounded-[14px] shadow-sm"
                 />
-                <h3 className="text-2xl font-normal">{t.work.app2.name}</h3>
-                <ArrowUpRight className="w-5 h-5" />
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xl md:text-2xl font-medium">{t.work.app2.name}</h3>
+                    <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  </div>
+                  <p className="text-base text-foreground/60 mt-0.5">{t.work.app2.tagline}</p>
+                </div>
               </div>
-              <p className="text-lg text-foreground/80 mb-4">{t.work.app2.tagline}</p>
-              <p className="text-muted-foreground leading-relaxed text-base mb-4">
+              <p className="text-foreground/45 leading-[1.8] text-sm mb-4">
                 {t.work.app2.description}
               </p>
-              <p className="text-muted-foreground/50 text-sm tracking-wide">
+              <p className="text-foreground/30 text-xs tracking-widest uppercase">
                 {t.work.app2.year}
               </p>
             </div>
@@ -216,31 +241,40 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="max-w-4xl mx-auto px-6 md:px-12 py-6 border-t border-border">
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          <span className="font-medium text-foreground">{t.contact.title}</span>
-          <a
-            href="mailto:hello@arborm.com"
-            className="inline-flex items-center gap-1 hover:text-foreground transition-colors group"
-          >
-            <span>hello@arborm.com</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+      <section id="contact" className="text-[#4a3828]" style={{ backgroundColor: '#d9cfbf' }}>
+        <div className="max-w-5xl mx-auto px-6 md:px-12 py-14 md:py-16">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <h2 className="text-xl md:text-2xl font-light mb-2 tracking-wide">{t.contact.title}</h2>
+              <p className="text-[#4a3828]/50 text-sm">{t.contact.tip}</p>
+            </div>
+            <a
+              href="mailto:hello@arborm.com"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-white hover:opacity-90 transition-all duration-300 group"
+              style={{ backgroundColor: '#7a8c4e' }}
+            >
+              <Mail className="w-4 h-4 text-white/80" />
+              <span className="text-sm font-medium">hello@arborm.com</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-white/60 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Footer: Copyright + ICP */}
-      <footer className="max-w-4xl mx-auto px-6 md:px-12 py-6 border-t border-border">
-        <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <p>&copy; {t.footer.copyright}</p>
-          <a 
-            href="https://beian.miit.gov.cn/#/Integrated/index" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-          >
-            {t.footer.icp}
-          </a>
+      {/* Footer */}
+      <footer className="text-white/60" style={{ backgroundColor: '#553d26' }}>
+        <div className="max-w-5xl mx-auto px-6 md:px-12 py-5">
+          <div className="flex items-center justify-between text-[10px] md:text-xs">
+            <p className="whitespace-nowrap">&copy; {t.footer.copyright}</p>
+            <a
+              href="https://beian.miit.gov.cn/#/Integrated/index"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white/60 transition-colors whitespace-nowrap"
+            >
+              {t.footer.icp}
+            </a>
+          </div>
         </div>
       </footer>
     </main>
