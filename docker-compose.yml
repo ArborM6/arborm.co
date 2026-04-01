@@ -1,8 +1,8 @@
 services:
   web:
     build:
-      context: .
-      dockerfile: Dockerfile
+      image: crpi-4hl324gk7yawrplw-vpc.cn-hangzhou.personal.cr.aliyuncs.com/arborm-temp/arborm.com
+      container_name: arborm.com
     ports:
       - "3000:3000"
-    restart: unless-stopped
+    restart: always
