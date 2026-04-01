@@ -1,5 +1,6 @@
-FROM node:22-alpine AS base
+FROM crpi-4hl324gk7yawrplw.cn-hangzhou.personal.cr.aliyuncs.com/arborm-temp/node-base:22-alpine AS base
 
+RUN npm config set registry https://registry.npmmirror.com
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # --- Dependencies ---
