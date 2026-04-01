@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/aliyun-node/node:22-alpine AS base
+FROM docker.nju.edu.cn/library/node:22-alpine AS base
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
