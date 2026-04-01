@@ -1,8 +1,0 @@
-services:
-  web:
-    build:
-      image: crpi-4hl324gk7yawrplw.cn-hangzhou.personal.cr.aliyuncs.com/arborm-temp/arborm.com:latest
-      container_name: arborm.com
-    ports:
-      - "3000:3000"
-    restart: always
