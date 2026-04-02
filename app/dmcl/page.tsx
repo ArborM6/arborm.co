@@ -22,7 +22,7 @@ const content = {
   },
   en: {
     back: "Back",
-    name: "banyanforest",
+    name: "Banyan Forest",
     tagline: "Make every day worth remembering",
     description: "May each of us become a richer self.",
     privacy: {
