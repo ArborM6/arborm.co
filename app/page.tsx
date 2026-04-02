@@ -51,7 +51,7 @@ const content = {
     work: {
       title: "Work",
       app: {
-        name: "One Tree Forest",
+        name: "banyanforest",
         tagline: "Make every day worth remembering",
         description: "May each of us become a richer self.",
         note: "",
