@@ -264,7 +264,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="text-white/60" style={{ backgroundColor: '#553d26' }}>
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-5">
-          <div className="flex items-center justify-between text-[10px] md:text-xs">
+          <div className="flex items-center justify-center gap-4 flex-wrap text-[10px] md:text-xs">
             <p className="whitespace-nowrap">&copy; {t.footer.copyright}</p>
             <a
               href="https://beian.miit.gov.cn/#/Integrated/index"
@@ -273,6 +273,15 @@ export default function Home() {
               className="hover:text-white/60 transition-colors whitespace-nowrap"
             >
               {t.footer.icp}
+            </a>
+            <a
+              href="https://beian.mps.gov.cn/#/query/webSearch?code=34011102003969"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white/60 transition-colors whitespace-nowrap flex items-center gap-1"
+            >
+              <img src="/gongan.png" alt="" className="w-4 h-4 inline-block" />
+              皖公网安备34011102003969号
             </a>
           </div>
         </div>
