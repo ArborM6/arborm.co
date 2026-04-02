@@ -71,8 +71,8 @@ const content = {
     },
     footer: {
       copyright: "2026 Hefei ArborM Technology Co., Ltd. All rights reserved",
-      icp: "ICP License: Wan ICP No. 2026007885",
-      gongan: "Wan Public Network Security No. 34011102003969",
+      icp: "皖ICP备2026007885号",
+      gongan: "皖公网安备34011102003969号",
     },
   },
 }
