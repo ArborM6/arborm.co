@@ -181,7 +181,7 @@ export default function Home() {
           </h2>
           <div className="max-w-3xl mx-auto space-y-6">
             {/* App 1: 独木成林 */}
-            <div className="group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300">
+            <a href="/dmcl" className="block group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300">
               <div className="flex items-center gap-4 mb-4">
                 <Image
                   src="/dumuchenglin-icon.jpg"
@@ -209,7 +209,7 @@ export default function Home() {
               <p className="text-foreground/30 text-xs tracking-widest uppercase">
                 {t.work.app.year}
               </p>
-            </div>
+            </a>
 
             {/* App 2: 为你 */}
             <div className="group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300">
