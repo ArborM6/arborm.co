@@ -37,6 +37,7 @@ const content = {
     footer: {
       copyright: "2026 合肥阿博木科技有限公司 版权所有",
       icp: "皖ICP备2026007885号",
+      gongan: "皖公网安备34011102003969号",
     },
   },
   en: {
@@ -71,6 +72,7 @@ const content = {
     footer: {
       copyright: "2026 Hefei ArborM Technology Co., Ltd. All rights reserved",
       icp: "ICP License: Wan ICP No. 2026007885",
+      gongan: "Wan Public Network Security No. 34011102003969",
     },
   },
 }
@@ -281,7 +283,7 @@ export default function Home() {
               className="hover:text-white/60 transition-colors whitespace-nowrap flex items-center gap-1"
             >
               <img src="/gongan.png" alt="" className="w-4 h-4 inline-block" />
-              皖公网安备34011102003969号
+              {t.footer.gongan}
             </a>
           </div>
         </div>
