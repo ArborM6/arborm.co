@@ -44,7 +44,7 @@ const content = {
       },
       {
         heading: "九、联系我们",
-        body: "如您对本隐私政策有任何疑问，请通过 support@dumuchenglin.com 联系我们。",
+        body: "如您对本隐私政策有任何疑问，请通过 support@arborm.com 联系我们。",
       },
     ],
     copyright: "© 2026 独木成林 · 保留所有权利",
@@ -88,7 +88,7 @@ const content = {
       },
       {
         heading: "9. Contact Us",
-        body: "If you have any questions about this Privacy Policy, please contact us at support@dumuchenglin.com.",
+        body: "If you have any questions about this Privacy Policy, please contact us at support@arborm.com.",
       },
     ],
     copyright: "© 2026 BanyanForest · All rights reserved.",

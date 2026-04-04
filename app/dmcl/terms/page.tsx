@@ -32,7 +32,7 @@ const content = {
       },
       {
         heading: "六、账号注销",
-        body: "您有权随时申请注销您的账号。您可以通过应用内\u201C设置\u201D中的注销功能自行操作，或发送邮件至 support@dumuchenglin.com 申请注销。账号注销后，我们将在 15 个工作日内删除您的个人信息，法律法规另有规定的除外。",
+        body: "您有权随时申请注销您的账号。您可以通过应用内\u201C设置\u201D中的注销功能自行操作，或发送邮件至 support@arborm.com 申请注销。账号注销后，我们将在 15 个工作日内删除您的个人信息，法律法规另有规定的除外。",
       },
       {
         heading: "七、服务终止",
@@ -80,7 +80,7 @@ const content = {
       },
       {
         heading: "6. Account Deletion",
-        body: "You may request deletion of your account at any time through the \"Settings\" section within the App, or by contacting us at support@dumuchenglin.com. Upon account deletion, we will remove your personal data within 30 days, unless retention is required by law.",
+        body: "You may request deletion of your account at any time through the \"Settings\" section within the App, or by contacting us at support@arborm.com. Upon account deletion, we will remove your personal data within 30 days, unless retention is required by law.",
       },
       {
         heading: "7. Service Termination",
