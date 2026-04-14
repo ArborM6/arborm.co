@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+
+const REGION = process.env.NEXT_PUBLIC_REGION || "china"
 import Image from "next/image"
 import { ArrowUpRight, Mail } from "lucide-react"
 
@@ -268,23 +270,27 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-5">
           <div className="flex items-center justify-center gap-4 flex-wrap text-[10px] md:text-xs">
             <p className="whitespace-nowrap">&copy; {t.footer.copyright}</p>
-            <a
-              href="https://beian.miit.gov.cn/#/Integrated/index"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white/60 transition-colors whitespace-nowrap"
-            >
-              {t.footer.icp}
-            </a>
-            <a
-              href="https://beian.mps.gov.cn/#/query/webSearch?code=34011102003969"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white/60 transition-colors whitespace-nowrap flex items-center gap-1"
-            >
-              <img src="/gongan.png" alt="" className="w-4 h-4 inline-block" />
-              {t.footer.gongan}
-            </a>
+            {REGION === "china" && (
+              <>
+                <a
+                  href="https://beian.miit.gov.cn/#/Integrated/index"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white/60 transition-colors whitespace-nowrap"
+                >
+                  {t.footer.icp}
+                </a>
+                <a
+                  href="https://beian.mps.gov.cn/#/query/webSearch?code=34011102003969"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white/60 transition-colors whitespace-nowrap flex items-center gap-1"
+                >
+                  <img src="/gongan.png" alt="" className="w-4 h-4 inline-block" />
+                  {t.footer.gongan}
+                </a>
+              </>
+            )}
           </div>
         </div>
       </footer>
