@@ -161,7 +161,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
         <nav className="max-w-6xl mx-auto grid grid-cols-3 items-center px-4 py-2.5 md:px-10 md:py-4">
           <a href="/" className="flex items-center gap-2.5">
             <Image
-              src="/arborm-logo.png"
+              src="/arborm-logo.png?v=20260517"
               alt="ArborM Logo"
               width={28}
               height={40}
