@@ -165,7 +165,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
               alt="ArborM Logo"
               width={28}
               height={40}
-              className="object-contain"
+              className="object-contain grayscale"
             />
             <div className="flex flex-col">
               <span className="text-lg font-medium tracking-wide">阿博木</span>
@@ -208,7 +208,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
       <section className="pt-14 md:pt-16">
         <div className="w-full aspect-[2/1] relative">
           <div
-            className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+            className="absolute inset-0 bg-contain bg-center bg-no-repeat grayscale"
             style={{ backgroundImage: "url('/arborm-hero.jpg')" }}
           />
         </div>
@@ -224,7 +224,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
       </section>
 
       {/* About */}
-      <section id="about" className="bg-stone-50/70">
+      <section id="about" className="bg-neutral-50">
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-20">
           <div className="max-w-2xl md:max-w-3xl">
             <p className="text-xl md:text-2xl leading-relaxed mb-6">
@@ -249,14 +249,14 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
           </h2>
           <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-6 md:gap-x-10">
             {/* App 1: 独木成林 */}
-            <a href="https://banyanforest.arborm.co/" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300 md:col-start-1 md:row-start-1">
+            <a href="https://banyanforest.arborm.co/" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer rounded-2xl bg-neutral-50 border border-black/[0.06] p-6 md:p-8 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300 md:col-start-1 md:row-start-1">
               <div className="flex items-center gap-4 mb-4">
                 <Image
                   src="/dumuchenglin-icon.jpg"
                   alt={t.work.app.name}
                   width={64}
                   height={64}
-                  className="rounded-[14px] shadow-sm"
+                  className="rounded-[14px] shadow-sm grayscale"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -280,14 +280,14 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
             </a>
 
             {/* App 2: 为你 */}
-            <div className="group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300 md:col-start-1 md:row-start-2">
+            <div className="group cursor-pointer rounded-2xl bg-neutral-50 border border-black/[0.06] p-6 md:p-8 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300 md:col-start-1 md:row-start-2">
               <div className="flex items-center gap-4 mb-4">
                 <Image
                   src="/foryou-icon.jpg"
                   alt={t.work.app2.name}
                   width={64}
                   height={64}
-                  className="rounded-[14px] shadow-sm"
+                  className="rounded-[14px] shadow-sm grayscale"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -309,14 +309,14 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
             <div className="hidden md:block md:col-start-2 md:row-start-1 md:row-span-2 w-px bg-black/10" />
 
             {/* App 3: 回响 ECHO */}
-            <a href="https://echo.arborm.co/" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer rounded-2xl bg-stone-50/80 border border-black/[0.04] p-6 md:p-8 hover:bg-stone-100/80 hover:border-black/[0.06] transition-all duration-300 md:col-start-3 md:row-start-1 md:row-span-2 md:self-start">
+            <a href="https://echo.arborm.co/" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer rounded-2xl bg-neutral-50 border border-black/[0.06] p-6 md:p-8 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300 md:col-start-3 md:row-start-1 md:row-span-2 md:self-start">
               <div className="flex items-center gap-4 mb-4">
                 <Image
                   src="/echo-icon.png"
                   alt={t.work.app3.name}
                   width={64}
                   height={64}
-                  className="rounded-[14px] shadow-sm"
+                  className="rounded-[14px] shadow-sm grayscale"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -338,28 +338,27 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="text-[#4a3828]" style={{ backgroundColor: '#d9cfbf' }}>
+      <section id="contact" className="bg-neutral-100 text-black">
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-14 md:py-16">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
               <h2 className="text-xl md:text-2xl font-light mb-2 tracking-wide">{t.contact.title}</h2>
-              <p className="text-[#4a3828]/50 text-sm">{t.contact.tip}</p>
+              <p className="text-black/55 text-sm">{t.contact.tip}</p>
             </div>
             <a
               href="mailto:hello@arborm.com"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-white hover:opacity-90 transition-all duration-300 group"
-              style={{ backgroundColor: '#7a8c4e' }}
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black border border-black/10 hover:bg-neutral-50 hover:border-black/20 transition-all duration-300 group"
             >
-              <Mail className="w-4 h-4 text-white/80" />
+              <Mail className="w-4 h-4 text-black/70" />
               <span className="text-sm font-medium">hello@arborm.com</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-white/60 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-black/45 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
             </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="text-white/60" style={{ backgroundColor: '#553d26' }}>
+      <footer className="bg-black text-white/65">
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-5">
           <div className="flex items-center justify-center gap-4 flex-wrap text-[10px] md:text-xs">
             <p className="whitespace-nowrap">&copy; {footer.copyright}</p>
@@ -369,7 +368,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
                   href="https://beian.miit.gov.cn/#/Integrated/index"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white/60 transition-colors whitespace-nowrap"
+                  className="hover:text-white transition-colors whitespace-nowrap"
                 >
                   {footer.icp}
                 </a>
@@ -377,7 +376,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
                   href="https://beian.mps.gov.cn/#/query/webSearch?code=34011102003969"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white/60 transition-colors whitespace-nowrap flex items-center gap-1"
+                  className="hover:text-white transition-colors whitespace-nowrap flex items-center gap-1"
                 >
                   <img src="/gongan.png" alt="" className="w-4 h-4 inline-block" />
                   {footer.gongan}
