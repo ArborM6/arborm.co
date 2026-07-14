@@ -209,7 +209,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
         <div className="w-full aspect-[2/1] relative">
           <div
             className="absolute inset-0 bg-contain bg-center bg-no-repeat grayscale"
-            style={{ backgroundImage: "url('/arborm-hero.jpg')" }}
+            style={{ backgroundImage: "url('/arborm-hero.png')" }}
           />
         </div>
         <div className="max-w-5xl mx-auto w-full flex justify-end px-6 md:px-12 pt-8 pb-4">
@@ -256,7 +256,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
                   alt={t.work.app.name}
                   width={64}
                   height={64}
-                  className="rounded-[14px] shadow-sm grayscale"
+                  className="rounded-[14px] shadow-sm"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -287,7 +287,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
                   alt={t.work.app2.name}
                   width={64}
                   height={64}
-                  className="rounded-[14px] shadow-sm grayscale"
+                  className="rounded-[14px] shadow-sm"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -316,7 +316,7 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
                   alt={t.work.app3.name}
                   width={64}
                   height={64}
-                  className="rounded-[14px] shadow-sm grayscale"
+                  className="rounded-[14px] shadow-sm"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
