@@ -206,10 +206,10 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
 
       {/* Hero */}
       <section className="pt-14 md:pt-16">
-        <div className="w-full aspect-[2/1] relative">
+        <div className="w-full aspect-[211/90] relative">
           <div
             className="absolute inset-0 bg-contain bg-center bg-no-repeat grayscale"
-            style={{ backgroundImage: "url('/arborm-hero.png')" }}
+            style={{ backgroundImage: "url('/arborm-hero.jpg')" }}
           />
         </div>
         <div className="max-w-5xl mx-auto w-full flex justify-end px-6 md:px-12 pt-8 pb-4">
