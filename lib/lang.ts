@@ -2,13 +2,13 @@ export type LangKey = 'en' | 'zh-Hant' | 'zh-Hans'
 
 export const REGION = process.env.NEXT_PUBLIC_REGION || "china"
 export const isWorld = REGION === "world"
-export const defaultZhLang: LangKey = isWorld ? 'zh-Hant' : 'zh-Hans'
+export const defaultZhLang: LangKey = 'zh-Hans'
 
 const validLangs: LangKey[] = ['en', 'zh-Hant', 'zh-Hans']
 
 /**
  * Resolve initial language from URL ?lang= parameter.
- * Falls back to REGION-based default Chinese variant.
+ * Falls back to Simplified Chinese.
  */
 export function resolveInitialLang(langParam?: string): LangKey {
   if (langParam && validLangs.includes(langParam as LangKey)) {

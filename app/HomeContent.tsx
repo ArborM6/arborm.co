@@ -189,10 +189,21 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
           <div className="flex items-center justify-end gap-1.5 text-xs text-muted-foreground">
             <button
               onClick={() => switchLang(defaultZhLang)}
-              className={`px-1.5 py-0.5 rounded transition-colors ${lang !== "en" ? "text-foreground bg-black/[0.04]" : "hover:text-foreground"}`}
+              className={`px-1.5 py-0.5 rounded transition-colors ${lang === defaultZhLang ? "text-foreground bg-black/[0.04]" : "hover:text-foreground"}`}
             >
-              {isWorld ? "繁體" : "中文"}
+              {isWorld ? "简体" : "中文"}
             </button>
+            {isWorld && (
+              <>
+                <span className="text-black/20">/</span>
+                <button
+                  onClick={() => switchLang("zh-Hant")}
+                  className={`px-1.5 py-0.5 rounded transition-colors ${lang === "zh-Hant" ? "text-foreground bg-black/[0.04]" : "hover:text-foreground"}`}
+                >
+                  繁體
+                </button>
+              </>
+            )}
             <span className="text-black/20">/</span>
             <button
               onClick={() => switchLang("en")}
