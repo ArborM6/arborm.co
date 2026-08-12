@@ -37,7 +37,7 @@ const content = {
   },
   en: {
     back: "Back",
-    name: "Banyan Forest",
+    name: "BanyanDay",
     tagline: "Make every day worth remembering",
     description: "May each of us become a richer self.",
     privacy: {
