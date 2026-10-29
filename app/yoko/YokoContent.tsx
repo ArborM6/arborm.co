@@ -94,8 +94,8 @@ const socials: {
     href: "https://www.xiaohongshu.com/user/profile/6880882b000000000d02e450",
   },
   // Douyin: Simple Icons has no douyin slug; closest open mark is TikTok (same ByteDance family).
-  // No profile URL yet — keep placeholder until confirmed.
-  { id: "douyin", title: "Douyin", hex: "000000", path: siTiktok.path, href: null },
+  // Profile share short link (stable redirect to sec_uid MS4wLjABAAAAFO7fBXv2T_EPUYoazyooHavJt5-wbmF8YXw3a3AXuf8).
+  { id: "douyin", title: "Douyin", hex: "000000", path: siTiktok.path, href: "https://v.douyin.com/5X5p3HOARYs/" },
   {
     id: "tiktok",
     title: siTiktok.title,
