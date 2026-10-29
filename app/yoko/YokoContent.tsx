@@ -12,7 +12,6 @@ const content = {
     back: "返回",
     bio: "脑子里总是长出一些奇怪的问题",
     social: "自媒体",
-    projects: "项目",
     apps: "应用",
     novels: "小说",
     appDumuchenglin: "独木成林",
@@ -34,7 +33,6 @@ const content = {
     back: "返回",
     bio: "脑子里总是长出一些奇怪的问题",
     social: "自媒體",
-    projects: "項目",
     apps: "應用",
     novels: "小說",
     appDumuchenglin: "獨木成林",
@@ -56,7 +54,6 @@ const content = {
     back: "Back",
     bio: "Strange questions keep growing in my mind",
     social: "Self-media",
-    projects: "Projects",
     apps: "Apps",
     novels: "Novels",
     appDumuchenglin: "BanyanDay",
@@ -254,11 +251,7 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
           <p className="text-base md:text-lg text-foreground/60 leading-relaxed">{t.bio}</p>
         </div>
 
-        <section className="mt-10" aria-label={t.projects}>
-          <h2 className="text-2xl md:text-3xl font-light text-center mb-6 tracking-[0.25em] text-foreground/80">
-            {t.projects}
-          </h2>
-
+        <section className="mt-12">
           <div className="space-y-4">
             <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
               <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
