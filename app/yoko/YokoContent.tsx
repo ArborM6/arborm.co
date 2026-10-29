@@ -110,7 +110,7 @@ const socials: {
     path: siYoutube.path,
     href: "https://www.youtube.com/@yoko_unfinished",
   },
-  // Threads: inferred from @yoko_unfinished handle (profile exists); not listed in the Threads link sheet.
+  // Threads: user-confirmed clean profile URL (no igshid tracking).
   {
     id: "threads",
     title: siThreads.title,
@@ -143,9 +143,22 @@ const apps = [
 ]
 
 const novels = [
-  { key: "beige" as const, src: "/novel-beige.jpg" },
-  { key: "yuji" as const, src: "/novel-yuji.jpg" },
-  { key: "yeluo" as const, src: "/novel-yeluo.jpg" },
+  // Fanqie/常读 share short links (changdunovel.com) decoded from poster QRs; open in new tab.
+  {
+    key: "beige" as const,
+    src: "/novel-beige.jpg",
+    href: "https://changdunovel.com/t/LLIokIRJoPc/",
+  },
+  {
+    key: "yuji" as const,
+    src: "/novel-yuji.jpg",
+    href: "https://changdunovel.com/t/k_eyyl9xBrE/",
+  },
+  {
+    key: "yeluo" as const,
+    src: "/novel-yeluo.jpg",
+    href: "https://changdunovel.com/t/Ew3qZm52LAM/",
+  },
 ]
 
 function BrandIcon({ path, title, hex }: { path: string; title: string; hex: string }) {
@@ -322,12 +335,12 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
                   return (
                     <a
                       key={novel.key}
-                      href="#"
-                      aria-disabled="true"
+                      href={novel.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label={name}
                       title={name}
-                      onClick={(event) => event.preventDefault()}
-                      className="flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center cursor-not-allowed"
+                      className="group flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
                     >
                       <Image
                         src={novel.src}
@@ -336,8 +349,9 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
                         height={100}
                         className="w-16 h-[5.5rem] md:w-[72px] md:h-[100px] rounded-[14px] shadow-sm object-cover object-top"
                       />
-                      <span className="text-xs md:text-sm font-medium text-foreground/80 truncate max-w-[4.75rem] md:max-w-[5.25rem]">
-                        {name}
+                      <span className="inline-flex items-center gap-0.5 text-xs md:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
+                        <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
+                        <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                       </span>
                     </a>
                   )
