@@ -259,110 +259,110 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
             {t.projects}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-4">
             <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
               <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
-                {t.apps}
+                {t.social}
               </h3>
-              <div className="flex flex-wrap gap-4 md:gap-5">
-                {apps.map((app) => {
-                  const name = appName(app.key)
+              <div className="grid grid-cols-3 gap-x-3 gap-y-4 md:gap-x-4 place-items-center">
+                {socials.map(({ id, title, hex, path, href }) => {
+                  const label = t.socialLabels[id]
+                  const isLive = Boolean(href)
                   return (
                     <a
-                      key={app.key}
-                      href={app.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
+                      key={id}
+                      href={href ?? "#"}
+                      target={isLive ? "_blank" : undefined}
+                      rel={isLive ? "noopener noreferrer" : undefined}
+                      aria-disabled={isLive ? undefined : true}
+                      aria-label={label}
+                      title={label}
+                      onClick={isLive ? undefined : (event) => event.preventDefault()}
+                      className={`flex flex-col items-center gap-1 w-[4.5rem] ${
+                        isLive
+                          ? "text-foreground/70 hover:text-foreground transition-colors"
+                          : "text-foreground/55 cursor-not-allowed"
+                      }`}
                     >
-                      <Image
-                        src={app.src}
-                        alt={name}
-                        width={72}
-                        height={72}
-                        className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[14px] shadow-sm object-cover"
-                      />
-                      <span className="inline-flex items-center gap-0.5 text-xs md:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
-                        <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
-                        <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      <span
+                        className="w-11 h-11 rounded-full border border-black/[0.08] bg-neutral-50 flex items-center justify-center"
+                        aria-hidden="true"
+                      >
+                        <BrandIcon path={path} title={title} hex={hex} />
                       </span>
+                      <span className="text-[11px] leading-tight">{label}</span>
                     </a>
                   )
                 })}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
-              <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
-                {t.novels}
-              </h3>
-              <div className="flex flex-wrap gap-4 md:gap-5">
-                {novels.map((novel) => {
-                  const name = novelName(novel.key)
-                  return (
-                    <a
-                      key={novel.key}
-                      href={novel.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={name}
-                      title={name}
-                      className="group flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
-                    >
-                      <Image
-                        src={novel.src}
-                        alt={name}
-                        width={72}
-                        height={100}
-                        className="w-16 h-[5.5rem] md:w-[72px] md:h-[100px] rounded-[14px] shadow-sm object-cover object-top"
-                      />
-                      <span className="inline-flex items-center gap-0.5 text-xs md:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
-                        <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
-                        <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                      </span>
-                    </a>
-                  )
-                })}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
+                <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
+                  {t.apps}
+                </h3>
+                <div className="flex flex-wrap gap-4 md:gap-5">
+                  {apps.map((app) => {
+                    const name = appName(app.key)
+                    return (
+                      <a
+                        key={app.key}
+                        href={app.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
+                      >
+                        <Image
+                          src={app.src}
+                          alt={name}
+                          width={72}
+                          height={72}
+                          className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[14px] shadow-sm object-cover"
+                        />
+                        <span className="inline-flex items-center gap-0.5 text-xs md:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
+                          <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
+                          <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                        </span>
+                      </a>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        <section className="mt-8" aria-label={t.social}>
-          <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
-            <h2 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4 text-center md:text-left">
-              {t.social}
-            </h2>
-            <div className="grid grid-cols-3 gap-x-3 gap-y-4 md:gap-x-4 place-items-center">
-              {socials.map(({ id, title, hex, path, href }) => {
-                const label = t.socialLabels[id]
-                const isLive = Boolean(href)
-                return (
-                  <a
-                    key={id}
-                    href={href ?? "#"}
-                    target={isLive ? "_blank" : undefined}
-                    rel={isLive ? "noopener noreferrer" : undefined}
-                    aria-disabled={isLive ? undefined : true}
-                    aria-label={label}
-                    title={label}
-                    onClick={isLive ? undefined : (event) => event.preventDefault()}
-                    className={`flex flex-col items-center gap-1 w-[4.5rem] ${
-                      isLive
-                        ? "text-foreground/70 hover:text-foreground transition-colors"
-                        : "text-foreground/55 cursor-not-allowed"
-                    }`}
-                  >
-                    <span
-                      className="w-11 h-11 rounded-full border border-black/[0.08] bg-neutral-50 flex items-center justify-center"
-                      aria-hidden="true"
-                    >
-                      <BrandIcon path={path} title={title} hex={hex} />
-                    </span>
-                    <span className="text-[11px] leading-tight">{label}</span>
-                  </a>
-                )
-              })}
+              <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
+                <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
+                  {t.novels}
+                </h3>
+                <div className="flex flex-wrap gap-4 md:gap-5">
+                  {novels.map((novel) => {
+                    const name = novelName(novel.key)
+                    return (
+                      <a
+                        key={novel.key}
+                        href={novel.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={name}
+                        title={name}
+                        className="group flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
+                      >
+                        <Image
+                          src={novel.src}
+                          alt={name}
+                          width={72}
+                          height={100}
+                          className="w-16 h-[5.5rem] md:w-[72px] md:h-[100px] rounded-[14px] shadow-sm object-cover object-top"
+                        />
+                        <span className="inline-flex items-center gap-0.5 text-xs md:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
+                          <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
+                          <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                        </span>
+                      </a>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </section>
