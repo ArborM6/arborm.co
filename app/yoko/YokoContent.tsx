@@ -84,14 +84,47 @@ const socials: {
   title: string
   hex: string
   path: string
+  href: string | null
 }[] = [
-  { id: "xiaohongshu", title: siXiaohongshu.title, hex: siXiaohongshu.hex, path: siXiaohongshu.path },
+  {
+    id: "xiaohongshu",
+    title: siXiaohongshu.title,
+    hex: siXiaohongshu.hex,
+    path: siXiaohongshu.path,
+    href: "https://www.xiaohongshu.com/user/profile/6880882b000000000d02e450",
+  },
   // Douyin: Simple Icons has no douyin slug; closest open mark is TikTok (same ByteDance family).
-  { id: "douyin", title: "Douyin", hex: "000000", path: siTiktok.path },
-  { id: "tiktok", title: siTiktok.title, hex: siTiktok.hex, path: siTiktok.path },
-  { id: "youtube", title: siYoutube.title, hex: siYoutube.hex, path: siYoutube.path },
-  { id: "threads", title: siThreads.title, hex: siThreads.hex, path: siThreads.path },
-  { id: "bilibili", title: siBilibili.title, hex: siBilibili.hex, path: siBilibili.path },
+  // No profile URL yet — keep placeholder until confirmed.
+  { id: "douyin", title: "Douyin", hex: "000000", path: siTiktok.path, href: null },
+  {
+    id: "tiktok",
+    title: siTiktok.title,
+    hex: siTiktok.hex,
+    path: siTiktok.path,
+    href: "https://www.tiktok.com/@yoko_unfinished",
+  },
+  {
+    id: "youtube",
+    title: siYoutube.title,
+    hex: siYoutube.hex,
+    path: siYoutube.path,
+    href: "https://www.youtube.com/@yoko_unfinished",
+  },
+  // Threads: inferred from @yoko_unfinished handle (profile exists); not listed in the Threads link sheet.
+  {
+    id: "threads",
+    title: siThreads.title,
+    hex: siThreads.hex,
+    path: siThreads.path,
+    href: "https://www.threads.com/@yoko_unfinished",
+  },
+  {
+    id: "bilibili",
+    title: siBilibili.title,
+    hex: siBilibili.hex,
+    path: siBilibili.path,
+    href: "https://space.bilibili.com/486013279",
+  },
 ]
 
 const apps = [
@@ -209,17 +242,24 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
 
         <section className="mt-12 text-center" aria-label={t.social}>
           <div className="flex flex-wrap items-start justify-center gap-x-4 gap-y-3 md:gap-x-5">
-            {socials.map(({ id, title, hex, path }) => {
+            {socials.map(({ id, title, hex, path, href }) => {
               const label = t.socialLabels[id]
+              const isLive = Boolean(href)
               return (
                 <a
                   key={id}
-                  href="#"
-                  aria-disabled="true"
+                  href={href ?? "#"}
+                  target={isLive ? "_blank" : undefined}
+                  rel={isLive ? "noopener noreferrer" : undefined}
+                  aria-disabled={isLive ? undefined : true}
                   aria-label={label}
                   title={label}
-                  onClick={(event) => event.preventDefault()}
-                  className="flex flex-col items-center gap-1 w-[4.5rem] text-foreground/55 cursor-not-allowed"
+                  onClick={isLive ? undefined : (event) => event.preventDefault()}
+                  className={`flex flex-col items-center gap-1 w-[4.5rem] ${
+                    isLive
+                      ? "text-foreground/70 hover:text-foreground transition-colors"
+                      : "text-foreground/55 cursor-not-allowed"
+                  }`}
                 >
                   <span
                     className="w-11 h-11 rounded-full border border-black/[0.08] bg-neutral-50 flex items-center justify-center"
@@ -239,8 +279,8 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
             {t.projects}
           </h2>
 
-          <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-7 space-y-8">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
               <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
                 {t.apps}
               </h3>
@@ -272,7 +312,7 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
               </div>
             </div>
 
-            <div>
+            <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
               <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
                 {t.novels}
               </h3>
