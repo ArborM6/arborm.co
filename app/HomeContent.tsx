@@ -21,20 +21,20 @@ const content = {
       app: {
         name: "独木成林",
         tagline: "让每一天都值得记录",
-        description: "愿我们每个人都能成为更丰富的自己。",
+        description: "愿我们每个人都能成为更丰富的自己",
         note: "",
         year: "2026",
       },
       app2: {
         name: "为你",
         tagline: "一份用心准备的礼物",
-        description: "正在精心打磨中。",
+        description: "正在精心打磨中",
         year: "2027",
       },
       app3: {
         name: "回响",
         tagline: "让每一次提醒，都有诗意",
-        description: "让每一次提醒，都有诗意。",
+        description: "让每一次提醒，都有诗意",
         year: "2026",
       },
     },
@@ -42,11 +42,11 @@ const content = {
       title: "作者",
       yoko: {
         name: "Yoko",
-        bio: "脑子里总是长出一些奇怪的问题。",
+        bio: "脑子里总是长出一些奇怪的问题",
       },
       aaacat: {
         name: "AAAcat",
-        bio: "无聊的AAACat.",
+        bio: "无聊的AAACat",
       },
     },
     contact: {
@@ -73,20 +73,20 @@ const content = {
       app: {
         name: "獨木成林",
         tagline: "讓每一天都值得記錄",
-        description: "願我們每個人都能成為更豐富的自己。",
+        description: "願我們每個人都能成為更豐富的自己",
         note: "",
         year: "2026",
       },
       app2: {
         name: "為你",
         tagline: "一份用心準備的禮物",
-        description: "正在精心打磨中。",
+        description: "正在精心打磨中",
         year: "2027",
       },
       app3: {
         name: "回響",
         tagline: "讓每一次提醒，都有詩意",
-        description: "讓每一次提醒，都有詩意。",
+        description: "讓每一次提醒，都有詩意",
         year: "2026",
       },
     },
@@ -94,11 +94,11 @@ const content = {
       title: "作者",
       yoko: {
         name: "Yoko",
-        bio: "脑子里总是长出一些奇怪的问题。",
+        bio: "脑子里总是长出一些奇怪的问题",
       },
       aaacat: {
         name: "AAAcat",
-        bio: "无聊的AAACat.",
+        bio: "无聊的AAACat",
       },
     },
     contact: {
@@ -125,20 +125,20 @@ const content = {
       app: {
         name: "BanyanDay",
         tagline: "Make every day worth remembering",
-        description: "May each of us become a richer self.",
+        description: "May each of us become a richer self",
         note: "",
         year: "2026",
       },
       app2: {
         name: "For You",
         tagline: "A gift crafted with care",
-        description: "Being carefully crafted.",
+        description: "Being carefully crafted",
         year: "2027",
       },
       app3: {
         name: "Echo",
         tagline: "Let every reminder be poetic",
-        description: "Let every reminder be poetic.",
+        description: "Let every reminder be poetic",
         year: "2026",
       },
     },
@@ -146,11 +146,11 @@ const content = {
       title: "Authors",
       yoko: {
         name: "Yoko",
-        bio: "Strange questions keep growing in my mind.",
+        bio: "Strange questions keep growing in my mind",
       },
       aaacat: {
         name: "AAAcat",
-        bio: "Boring AAACat.",
+        bio: "Boring AAACat",
       },
     },
     contact: {
