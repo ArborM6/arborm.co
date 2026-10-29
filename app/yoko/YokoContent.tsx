@@ -12,13 +12,14 @@ const content = {
     back: "返回",
     bio: "脑子里总是长出一些奇怪的问题。",
     social: "社交平台",
-    placeholder: "即将开放",
     projects: "项目",
     apps: "应用",
     novels: "小说",
     appDumuchenglin: "独木成林",
     appForyou: "为你",
-    novelBeige: "《碑歌》",
+    novelBeige: "碑歌",
+    novelYuji: "雩祭",
+    novelYeluo: "叶落",
     socialLabels: {
       xiaohongshu: "小红书",
       douyin: "抖音",
@@ -33,13 +34,14 @@ const content = {
     back: "返回",
     bio: "脑子里总是长出一些奇怪的问题。",
     social: "社交平台",
-    placeholder: "即將開放",
     projects: "項目",
     apps: "應用",
     novels: "小說",
     appDumuchenglin: "獨木成林",
     appForyou: "為你",
-    novelBeige: "《碑歌》",
+    novelBeige: "碑歌",
+    novelYuji: "雩祭",
+    novelYeluo: "葉落",
     socialLabels: {
       xiaohongshu: "小紅書",
       douyin: "抖音",
@@ -54,13 +56,14 @@ const content = {
     back: "Back",
     bio: "Strange questions keep growing in my mind.",
     social: "Social",
-    placeholder: "Coming soon",
     projects: "Projects",
     apps: "Apps",
     novels: "Novels",
     appDumuchenglin: "BanyanDay",
     appForyou: "For You",
-    novelBeige: "Monument Song",
+    novelBeige: "碑歌",
+    novelYuji: "雩祭",
+    novelYeluo: "叶落",
     socialLabels: {
       xiaohongshu: "Xiaohongshu",
       douyin: "Douyin",
@@ -89,6 +92,27 @@ const socials: {
   { id: "youtube", title: siYoutube.title, hex: siYoutube.hex, path: siYoutube.path },
   { id: "threads", title: siThreads.title, hex: siThreads.hex, path: siThreads.path },
   { id: "bilibili", title: siBilibili.title, hex: siBilibili.hex, path: siBilibili.path },
+]
+
+const apps = [
+  {
+    key: "dumuchenglin" as const,
+    href: "https://dmcl.arborm.co",
+    src: "/dumuchenglin-icon.jpg",
+    external: true,
+  },
+  {
+    key: "foryou" as const,
+    href: "https://foryou.arborm.co/",
+    src: "/foryou-icon.jpg",
+    external: true,
+  },
+]
+
+const novels = [
+  { key: "beige" as const, src: "/novel-beige.jpg" },
+  { key: "yuji" as const, src: "/novel-yuji.jpg" },
+  { key: "yeluo" as const, src: "/novel-yeluo.jpg" },
 ]
 
 function BrandIcon({ path, title, hex }: { path: string; title: string; hex: string }) {
@@ -120,6 +144,15 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
   const switchLang = (newLang: LangKey) => {
     setLang(newLang)
     updateLangInBrowser(newLang)
+  }
+
+  const appName = (key: (typeof apps)[number]["key"]) =>
+    key === "dumuchenglin" ? t.appDumuchenglin : t.appForyou
+
+  const novelName = (key: (typeof novels)[number]["key"]) => {
+    if (key === "beige") return t.novelBeige
+    if (key === "yuji") return t.novelYuji
+    return t.novelYeluo
   }
 
   return (
@@ -174,8 +207,8 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
           <p className="text-base md:text-lg text-foreground/60 leading-relaxed">{t.bio}</p>
         </div>
 
-        <section className="mt-16 text-center" aria-label={t.social}>
-          <div className="flex flex-wrap items-start justify-center gap-4 md:gap-6">
+        <section className="mt-12 text-center" aria-label={t.social}>
+          <div className="flex flex-wrap items-start justify-center gap-x-4 gap-y-3 md:gap-x-5">
             {socials.map(({ id, title, hex, path }) => {
               const label = t.socialLabels[id]
               return (
@@ -183,101 +216,92 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
                   key={id}
                   href="#"
                   aria-disabled="true"
-                  aria-label={`${label} (${t.placeholder}, placeholder)`}
-                  title={`${label} · ${t.placeholder} (placeholder)`}
+                  aria-label={label}
+                  title={label}
                   onClick={(event) => event.preventDefault()}
-                  className="flex flex-col items-center gap-2 w-20 text-foreground/55 cursor-not-allowed"
+                  className="flex flex-col items-center gap-1 w-[4.5rem] text-foreground/55 cursor-not-allowed"
                 >
                   <span
-                    className="w-12 h-12 rounded-full border border-black/[0.08] bg-neutral-50 flex items-center justify-center"
+                    className="w-11 h-11 rounded-full border border-black/[0.08] bg-neutral-50 flex items-center justify-center"
                     aria-hidden="true"
                   >
                     <BrandIcon path={path} title={title} hex={hex} />
                   </span>
-                  <span className="text-xs">{label}</span>
+                  <span className="text-[11px] leading-tight">{label}</span>
                 </a>
               )
             })}
           </div>
-          <p className="mt-6 text-xs text-foreground/35">{t.placeholder}</p>
         </section>
 
-        <section className="mt-16" aria-label={t.projects}>
-          <h2 className="text-2xl md:text-3xl font-light text-center mb-10 tracking-[0.25em] text-foreground/80">
+        <section className="mt-10" aria-label={t.projects}>
+          <h2 className="text-2xl md:text-3xl font-light text-center mb-6 tracking-[0.25em] text-foreground/80">
             {t.projects}
           </h2>
 
-          <div className="space-y-10">
+          <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-7 space-y-8">
             <div>
-              <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4 text-center md:text-left">
+              <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
                 {t.apps}
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a
-                  href="https://banyanforest.arborm.co/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl bg-neutral-50 border border-black/[0.06] p-4 md:p-5 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300"
-                >
-                  <Image
-                    src="/dumuchenglin-icon.jpg"
-                    alt={t.appDumuchenglin}
-                    width={64}
-                    height={64}
-                    className="w-14 h-14 md:w-16 md:h-16 rounded-[14px] shadow-sm shrink-0"
-                  />
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="text-lg md:text-xl font-medium truncate">{t.appDumuchenglin}</span>
-                    <ArrowUpRight className="w-4 h-4 shrink-0 text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </div>
-                </a>
-
-                <a
-                  href="https://foryou.arborm.co/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl bg-neutral-50 border border-black/[0.06] p-4 md:p-5 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300"
-                >
-                  <Image
-                    src="/foryou-icon.jpg"
-                    alt={t.appForyou}
-                    width={64}
-                    height={64}
-                    className="w-14 h-14 md:w-16 md:h-16 rounded-[14px] shadow-sm shrink-0"
-                  />
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="text-lg md:text-xl font-medium truncate">{t.appForyou}</span>
-                    <ArrowUpRight className="w-4 h-4 shrink-0 text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </div>
-                </a>
+              <div className="flex flex-wrap gap-4 md:gap-5">
+                {apps.map((app) => {
+                  const name = appName(app.key)
+                  return (
+                    <a
+                      key={app.key}
+                      href={app.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
+                    >
+                      <Image
+                        src={app.src}
+                        alt={name}
+                        width={72}
+                        height={72}
+                        className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[14px] shadow-sm object-cover"
+                      />
+                      <span className="inline-flex items-center gap-0.5 text-xs md:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
+                        <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
+                        <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      </span>
+                    </a>
+                  )
+                })}
               </div>
             </div>
 
             <div>
-              <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4 text-center md:text-left">
+              <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
                 {t.novels}
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a
-                  href="#"
-                  aria-disabled="true"
-                  aria-label={`${t.novelBeige} (${t.placeholder}, Fanqie novel link placeholder)`}
-                  title={`${t.novelBeige} · ${t.placeholder} (Fanqie URL placeholder)`}
-                  onClick={(event) => event.preventDefault()}
-                  className="group flex items-center gap-4 rounded-2xl bg-neutral-50 border border-black/[0.06] p-4 md:p-5 cursor-not-allowed"
-                >
-                  <Image
-                    src="/novel-beige.jpg"
-                    alt={t.novelBeige}
-                    width={64}
-                    height={64}
-                    className="w-14 h-14 md:w-16 md:h-16 rounded-[14px] shadow-sm object-cover object-top shrink-0"
-                  />
-                  <div className="flex flex-col items-start gap-0.5 min-w-0">
-                    <span className="text-lg md:text-xl font-medium truncate">{t.novelBeige}</span>
-                    <span className="text-xs text-foreground/35">{t.placeholder}</span>
-                  </div>
-                </a>
+              <div className="flex flex-wrap gap-4 md:gap-5">
+                {novels.map((novel) => {
+                  const name = novelName(novel.key)
+                  return (
+                    <a
+                      key={novel.key}
+                      href="#"
+                      aria-disabled="true"
+                      aria-label={name}
+                      title={name}
+                      onClick={(event) => event.preventDefault()}
+                      className="flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center cursor-not-allowed"
+                    >
+                      <Image
+                        src={novel.src}
+                        alt={name}
+                        width={72}
+                        height={100}
+                        className="w-16 h-[5.5rem] md:w-[72px] md:h-[100px] rounded-[14px] shadow-sm object-cover object-top"
+                      />
+                      <span className="text-xs md:text-sm font-medium text-foreground/80 truncate max-w-[4.75rem] md:max-w-[5.25rem]">
+                        {name}
+                      </span>
+                    </a>
+                  )
+                })}
               </div>
             </div>
           </div>
