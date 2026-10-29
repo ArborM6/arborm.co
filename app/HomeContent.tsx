@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { ArrowUpRight, Mail } from "lucide-react"
 import { LangKey, isWorld, defaultZhLang, updateLangInBrowser, getLangFromURL, REGION } from "@/lib/lang"
 
@@ -390,29 +391,39 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
           <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
             {/* Yoko */}
             <div className="flex flex-col items-center text-center">
-              <div className="relative w-24 h-24 md:w-32 md:h-32 mb-4">
-                <Image
-                  src="/author-yoko.jpg"
-                  alt={t.authors.yoko.name}
-                  fill
-                  className="rounded-full object-cover"
-                />
-              </div>
-              <h3 className="text-lg md:text-xl font-medium mb-2">{t.authors.yoko.name}</h3>
+              <Link href="/yoko" className="group flex flex-col items-center mb-2">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 mb-4 transition-transform duration-300 group-hover:scale-[1.03]">
+                  <Image
+                    src="/author-yoko.jpg"
+                    alt={t.authors.yoko.name}
+                    fill
+                    className="rounded-full object-cover"
+                  />
+                </div>
+                <h3 className="flex items-center gap-1 text-lg md:text-xl font-medium group-hover:text-foreground/65 transition-colors">
+                  {t.authors.yoko.name}
+                  <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </h3>
+              </Link>
               <p className="text-sm text-foreground/50">{t.authors.yoko.bio}</p>
             </div>
 
             {/* AAAcat */}
             <div className="flex flex-col items-center text-center">
-              <div className="relative w-24 h-24 md:w-32 md:h-32 mb-4">
-                <Image
-                  src="/author-aaacat.jpg"
-                  alt={t.authors.aaacat.name}
-                  fill
-                  className="rounded-full object-cover"
-                />
-              </div>
-              <h3 className="text-lg md:text-xl font-medium mb-2">{t.authors.aaacat.name}</h3>
+              <a href="https://aaacat.com" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center mb-2">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 mb-4 transition-transform duration-300 group-hover:scale-[1.03]">
+                  <Image
+                    src="/author-aaacat.jpg"
+                    alt={t.authors.aaacat.name}
+                    fill
+                    className="rounded-full object-cover"
+                  />
+                </div>
+                <h3 className="flex items-center gap-1 text-lg md:text-xl font-medium group-hover:text-foreground/65 transition-colors">
+                  {t.authors.aaacat.name}
+                  <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </h3>
+              </a>
               <p className="text-sm text-foreground/50">{t.authors.aaacat.bio}</p>
             </div>
           </div>
