@@ -10,8 +10,8 @@ import { LangKey, isWorld, defaultZhLang, updateLangInBrowser, getLangFromURL, R
 const content = {
   "zh-Hans": {
     back: "返回",
-    bio: "脑子里总是长出一些奇怪的问题。",
-    social: "社交平台",
+    bio: "脑子里总是长出一些奇怪的问题",
+    social: "自媒体",
     projects: "项目",
     apps: "应用",
     novels: "小说",
@@ -32,8 +32,8 @@ const content = {
   },
   "zh-Hant": {
     back: "返回",
-    bio: "脑子里总是长出一些奇怪的问题。",
-    social: "社交平台",
+    bio: "脑子里总是长出一些奇怪的问题",
+    social: "自媒體",
     projects: "項目",
     apps: "應用",
     novels: "小說",
@@ -54,8 +54,8 @@ const content = {
   },
   en: {
     back: "Back",
-    bio: "Strange questions keep growing in my mind.",
-    social: "Social",
+    bio: "Strange questions keep growing in my mind",
+    social: "Self-media",
     projects: "Projects",
     apps: "Apps",
     novels: "Novels",
@@ -86,12 +86,14 @@ const socials: {
   path: string
   href: string | null
 }[] = [
+  // Order: Threads → 抖音 → TikTok → B站 → YouTube → 小红书 (3 per row in UI)
+  // Threads: user-confirmed clean profile URL (no igshid tracking).
   {
-    id: "xiaohongshu",
-    title: siXiaohongshu.title,
-    hex: siXiaohongshu.hex,
-    path: siXiaohongshu.path,
-    href: "https://www.xiaohongshu.com/user/profile/6880882b000000000d02e450",
+    id: "threads",
+    title: siThreads.title,
+    hex: siThreads.hex,
+    path: siThreads.path,
+    href: "https://www.threads.com/@yoko_unfinished",
   },
   // Douyin: Simple Icons has no douyin slug; closest open mark is TikTok (same ByteDance family).
   // Profile share short link (stable redirect to sec_uid MS4wLjABAAAAFO7fBXv2T_EPUYoazyooHavJt5-wbmF8YXw3a3AXuf8).
@@ -104,26 +106,25 @@ const socials: {
     href: "https://www.tiktok.com/@yoko_unfinished",
   },
   {
+    id: "bilibili",
+    title: siBilibili.title,
+    hex: siBilibili.hex,
+    path: siBilibili.path,
+    href: "https://space.bilibili.com/486013279",
+  },
+  {
     id: "youtube",
     title: siYoutube.title,
     hex: siYoutube.hex,
     path: siYoutube.path,
     href: "https://www.youtube.com/@yoko_unfinished",
   },
-  // Threads: user-confirmed clean profile URL (no igshid tracking).
   {
-    id: "threads",
-    title: siThreads.title,
-    hex: siThreads.hex,
-    path: siThreads.path,
-    href: "https://www.threads.com/@yoko_unfinished",
-  },
-  {
-    id: "bilibili",
-    title: siBilibili.title,
-    hex: siBilibili.hex,
-    path: siBilibili.path,
-    href: "https://space.bilibili.com/486013279",
+    id: "xiaohongshu",
+    title: siXiaohongshu.title,
+    hex: siXiaohongshu.hex,
+    path: siXiaohongshu.path,
+    href: "https://www.xiaohongshu.com/user/profile/6880882b000000000d02e450",
   },
 ]
 
@@ -253,40 +254,6 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
           <p className="text-base md:text-lg text-foreground/60 leading-relaxed">{t.bio}</p>
         </div>
 
-        <section className="mt-12 text-center" aria-label={t.social}>
-          <div className="flex flex-wrap items-start justify-center gap-x-4 gap-y-3 md:gap-x-5">
-            {socials.map(({ id, title, hex, path, href }) => {
-              const label = t.socialLabels[id]
-              const isLive = Boolean(href)
-              return (
-                <a
-                  key={id}
-                  href={href ?? "#"}
-                  target={isLive ? "_blank" : undefined}
-                  rel={isLive ? "noopener noreferrer" : undefined}
-                  aria-disabled={isLive ? undefined : true}
-                  aria-label={label}
-                  title={label}
-                  onClick={isLive ? undefined : (event) => event.preventDefault()}
-                  className={`flex flex-col items-center gap-1 w-[4.5rem] ${
-                    isLive
-                      ? "text-foreground/70 hover:text-foreground transition-colors"
-                      : "text-foreground/55 cursor-not-allowed"
-                  }`}
-                >
-                  <span
-                    className="w-11 h-11 rounded-full border border-black/[0.08] bg-neutral-50 flex items-center justify-center"
-                    aria-hidden="true"
-                  >
-                    <BrandIcon path={path} title={title} hex={hex} />
-                  </span>
-                  <span className="text-[11px] leading-tight">{label}</span>
-                </a>
-              )
-            })}
-          </div>
-        </section>
-
         <section className="mt-10" aria-label={t.projects}>
           <h2 className="text-2xl md:text-3xl font-light text-center mb-6 tracking-[0.25em] text-foreground/80">
             {t.projects}
@@ -357,6 +324,45 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
                   )
                 })}
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-8" aria-label={t.social}>
+          <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
+            <h2 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4 text-center md:text-left">
+              {t.social}
+            </h2>
+            <div className="grid grid-cols-3 gap-x-3 gap-y-4 md:gap-x-4 place-items-center">
+              {socials.map(({ id, title, hex, path, href }) => {
+                const label = t.socialLabels[id]
+                const isLive = Boolean(href)
+                return (
+                  <a
+                    key={id}
+                    href={href ?? "#"}
+                    target={isLive ? "_blank" : undefined}
+                    rel={isLive ? "noopener noreferrer" : undefined}
+                    aria-disabled={isLive ? undefined : true}
+                    aria-label={label}
+                    title={label}
+                    onClick={isLive ? undefined : (event) => event.preventDefault()}
+                    className={`flex flex-col items-center gap-1 w-[4.5rem] ${
+                      isLive
+                        ? "text-foreground/70 hover:text-foreground transition-colors"
+                        : "text-foreground/55 cursor-not-allowed"
+                    }`}
+                  >
+                    <span
+                      className="w-11 h-11 rounded-full border border-black/[0.08] bg-neutral-50 flex items-center justify-center"
+                      aria-hidden="true"
+                    >
+                      <BrandIcon path={path} title={title} hex={hex} />
+                    </span>
+                    <span className="text-[11px] leading-tight">{label}</span>
+                  </a>
+                )
+              })}
             </div>
           </div>
         </section>
