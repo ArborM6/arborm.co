@@ -290,7 +290,7 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
                 <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
                   {t.apps}
