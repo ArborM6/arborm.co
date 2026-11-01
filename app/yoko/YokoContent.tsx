@@ -254,7 +254,7 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
         <section className="mt-12">
           <div className="space-y-4">
             <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
-              <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
+              <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4 text-center">
                 {t.social}
               </h3>
               <div className="grid grid-cols-3 gap-x-3 gap-y-4 md:gap-x-4 place-items-center">
@@ -292,10 +292,10 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
 
             <div className="grid grid-cols-1 gap-4">
               <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
-                <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
+                <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4 text-center">
                   {t.apps}
                 </h3>
-                <div className="flex flex-wrap gap-4 md:gap-5">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-5">
                   {apps.map((app) => {
                     const name = appName(app.key)
                     return (
@@ -324,10 +324,10 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
               </div>
 
               <div className="rounded-2xl border border-black/[0.06] bg-neutral-50/60 p-5 md:p-6">
-                <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4">
+                <h3 className="text-sm font-medium tracking-[0.2em] text-foreground/45 uppercase mb-4 text-center">
                   {t.novels}
                 </h3>
-                <div className="flex flex-wrap gap-4 md:gap-5">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-5">
                   {novels.map((novel) => {
                     const name = novelName(novel.key)
                     return (
