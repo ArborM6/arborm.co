@@ -25,12 +25,6 @@ const content = {
         note: "",
         year: "2026",
       },
-      app2: {
-        name: "为你",
-        tagline: "一份用心准备的礼物",
-        description: "正在精心打磨中",
-        year: "2027",
-      },
       app3: {
         name: "回响",
         tagline: "让每一次提醒，都有诗意",
@@ -77,12 +71,6 @@ const content = {
         note: "",
         year: "2026",
       },
-      app2: {
-        name: "為你",
-        tagline: "一份用心準備的禮物",
-        description: "正在精心打磨中",
-        year: "2027",
-      },
       app3: {
         name: "回響",
         tagline: "讓每一次提醒，都有詩意",
@@ -128,12 +116,6 @@ const content = {
         description: "May each of us become a richer self",
         note: "",
         year: "2026",
-      },
-      app2: {
-        name: "For You",
-        tagline: "A gift crafted with care",
-        description: "Being carefully crafted",
-        year: "2027",
       },
       app3: {
         name: "Echo",
@@ -324,37 +306,11 @@ export default function HomeContent({ initialLang }: { initialLang: LangKey }) {
               </p>
             </a>
 
-            {/* App 2: 为你 */}
-            <div className="group cursor-pointer rounded-2xl bg-neutral-50 border border-black/[0.06] p-6 md:p-8 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300 md:col-start-1 md:row-start-2">
-              <div className="flex items-center gap-4 mb-4">
-                <Image
-                  src="/foryou-icon.jpg"
-                  alt={t.work.app2.name}
-                  width={64}
-                  height={64}
-                  className="rounded-[14px] shadow-sm"
-                />
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-xl md:text-2xl font-medium">{t.work.app2.name}</h3>
-                    <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </div>
-                  <p className="text-base text-foreground/60 mt-0.5">{t.work.app2.tagline}</p>
-                </div>
-              </div>
-              <p className="text-foreground/45 leading-[1.8] text-sm mb-4">
-                {t.work.app2.description}
-              </p>
-              <p className="text-foreground/30 text-xs tracking-widest uppercase">
-                {t.work.app2.year}
-              </p>
-            </div>
-
             {/* Vertical divider between columns */}
-            <div className="hidden md:block md:col-start-2 md:row-start-1 md:row-span-2 w-px bg-black/10" />
+            <div className="hidden md:block md:col-start-2 md:row-start-1 w-px bg-black/10" />
 
             {/* App 3: 回响 ECHO */}
-            <a href="https://echo.arborm.co/" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer rounded-2xl bg-neutral-50 border border-black/[0.06] p-6 md:p-8 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300 md:col-start-3 md:row-start-1 md:row-span-2 md:self-start">
+            <a href="https://echo.arborm.co/" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer rounded-2xl bg-neutral-50 border border-black/[0.06] p-6 md:p-8 hover:bg-neutral-100 hover:border-black/[0.12] transition-all duration-300 md:col-start-3 md:row-start-1 md:self-start">
               <div className="flex items-center gap-4 mb-4">
                 <Image
                   src="/echo-icon.png"
