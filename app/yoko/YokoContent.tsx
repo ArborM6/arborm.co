@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight } from "lucide-react"
-import { siXiaohongshu, siTiktok, siYoutube, siThreads, siBilibili } from "simple-icons"
+import { siXiaohongshu, siTiktok, siYoutube, siThreads, siBilibili, siX, siFacebook, siInstagram } from "simple-icons"
 import { LangKey, isWorld, defaultZhLang, updateLangInBrowser, getLangFromURL, REGION } from "@/lib/lang"
 
 const content = {
@@ -23,9 +23,12 @@ const content = {
       xiaohongshu: "小红书",
       douyin: "抖音",
       tiktok: "TikTok",
+      x: "X",
       youtube: "YouTube",
       threads: "Threads",
       bilibili: "B站",
+      facebook: "Facebook",
+      instagram: "Instagram",
     },
     footer: { copyright: "2026 合肥阿博木科技有限公司 版权所有" },
   },
@@ -44,9 +47,12 @@ const content = {
       xiaohongshu: "小紅書",
       douyin: "抖音",
       tiktok: "TikTok",
+      x: "X",
       youtube: "YouTube",
       threads: "Threads",
       bilibili: "B站",
+      facebook: "Facebook",
+      instagram: "Instagram",
     },
     footer: { copyright: "2026 合肥阿博木科技有限公司 版權所有" },
   },
@@ -65,9 +71,12 @@ const content = {
       xiaohongshu: "Xiaohongshu",
       douyin: "Douyin",
       tiktok: "TikTok",
+      x: "X",
       youtube: "YouTube",
       threads: "Threads",
       bilibili: "Bilibili",
+      facebook: "Facebook",
+      instagram: "Instagram",
     },
     footer: { copyright: "2026 Hefei ArborM Technology Co., Ltd. All rights reserved" },
   },
@@ -83,7 +92,7 @@ const socials: {
   path: string
   href: string | null
 }[] = [
-  // Order: Threads → 抖音 → TikTok → B站 → YouTube → 小红书 (3 per row in UI)
+  // Order (3 per row): Threads → 抖音 → TikTok | X → B站 → Facebook | YouTube → 小红书 → Instagram
   // Threads: user-confirmed clean profile URL (no igshid tracking).
   {
     id: "threads",
@@ -103,11 +112,25 @@ const socials: {
     href: "https://www.tiktok.com/@yoko_unfinished",
   },
   {
+    id: "x",
+    title: siX.title,
+    hex: siX.hex,
+    path: siX.path,
+    href: "https://x.com/Yoko_Unfinished",
+  },
+  {
     id: "bilibili",
     title: siBilibili.title,
     hex: siBilibili.hex,
     path: siBilibili.path,
     href: "https://space.bilibili.com/486013279",
+  },
+  {
+    id: "facebook",
+    title: siFacebook.title,
+    hex: siFacebook.hex,
+    path: siFacebook.path,
+    href: "https://www.facebook.com/yoko.unfinished",
   },
   {
     id: "youtube",
@@ -122,6 +145,13 @@ const socials: {
     hex: siXiaohongshu.hex,
     path: siXiaohongshu.path,
     href: "https://www.xiaohongshu.com/user/profile/6880882b000000000d02e450",
+  },
+  {
+    id: "instagram",
+    title: siInstagram.title,
+    hex: siInstagram.hex,
+    path: siInstagram.path,
+    href: "https://www.instagram.com/yoko_unfinished/",
   },
 ]
 
