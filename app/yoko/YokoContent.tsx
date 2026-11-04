@@ -15,6 +15,7 @@ const content = {
     apps: "应用",
     novels: "小说",
     appDumuchenglin: "独木成林",
+    appForyou: "为你",
     novelBeige: "碑歌",
     novelYuji: "雩祭",
     novelYeluo: "叶落",
@@ -35,6 +36,7 @@ const content = {
     apps: "應用",
     novels: "小說",
     appDumuchenglin: "獨木成林",
+    appForyou: "為你",
     novelBeige: "碑歌",
     novelYuji: "雩祭",
     novelYeluo: "葉落",
@@ -55,6 +57,7 @@ const content = {
     apps: "Apps",
     novels: "Novels",
     appDumuchenglin: "BanyanDay",
+    appForyou: "For You",
     novelBeige: "碑歌",
     novelYuji: "雩祭",
     novelYeluo: "叶落",
@@ -122,11 +125,23 @@ const socials: {
   },
 ]
 
-const apps = [
+const apps: {
+  key: "dumuchenglin" | "foryou"
+  href: string | null
+  src: string
+  external: boolean
+}[] = [
   {
-    key: "dumuchenglin" as const,
+    key: "dumuchenglin",
     href: "https://dmcl.arborm.co",
     src: "/dumuchenglin-icon.jpg",
+    external: true,
+  },
+  {
+    key: "foryou",
+    // Public URL withheld while For You is still in development.
+    href: null,
+    src: "/foryou-icon.jpg",
     external: true,
   },
 ]
@@ -182,7 +197,7 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
   }
 
   const appName = (key: (typeof apps)[number]["key"]) =>
-    ({ dumuchenglin: t.appDumuchenglin } as const)[key]
+    key === "dumuchenglin" ? t.appDumuchenglin : t.appForyou
 
   const novelName = (key: (typeof novels)[number]["key"]) => {
     if (key === "beige") return t.novelBeige
@@ -289,6 +304,42 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
                 <div className="flex flex-wrap justify-center gap-4 md:gap-5">
                   {apps.map((app) => {
                     const name = appName(app.key)
+                    const isLive = Boolean(app.href)
+                    const body = (
+                      <>
+                        <Image
+                          src={app.src}
+                          alt={name}
+                          width={72}
+                          height={72}
+                          className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[14px] shadow-sm object-cover"
+                        />
+                        <span
+                          className={`inline-flex items-center gap-0.5 text-xs md:text-sm font-medium ${
+                            isLive
+                              ? "text-foreground/80 group-hover:text-foreground transition-colors"
+                              : "text-foreground/80"
+                          }`}
+                        >
+                          <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
+                          {isLive && (
+                            <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                          )}
+                        </span>
+                      </>
+                    )
+                    if (!isLive || !app.href) {
+                      return (
+                        <div
+                          key={app.key}
+                          className="flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
+                          aria-label={name}
+                          title={name}
+                        >
+                          {body}
+                        </div>
+                      )
+                    }
                     return (
                       <a
                         key={app.key}
@@ -297,17 +348,7 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
                         rel="noopener noreferrer"
                         className="group flex flex-col items-center gap-2 w-[4.75rem] md:w-[5.25rem] text-center"
                       >
-                        <Image
-                          src={app.src}
-                          alt={name}
-                          width={72}
-                          height={72}
-                          className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[14px] shadow-sm object-cover"
-                        />
-                        <span className="inline-flex items-center gap-0.5 text-xs md:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
-                          <span className="truncate max-w-[4.75rem] md:max-w-[5.25rem]">{name}</span>
-                          <ArrowUpRight className="w-3 h-3 shrink-0 text-foreground/30 group-hover:text-foreground/55 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                        </span>
+                        {body}
                       </a>
                     )
                   })}
