@@ -15,7 +15,6 @@ const content = {
     apps: "应用",
     novels: "小说",
     appDumuchenglin: "独木成林",
-    appForyou: "为你",
     novelBeige: "碑歌",
     novelYuji: "雩祭",
     novelYeluo: "叶落",
@@ -36,7 +35,6 @@ const content = {
     apps: "應用",
     novels: "小說",
     appDumuchenglin: "獨木成林",
-    appForyou: "為你",
     novelBeige: "碑歌",
     novelYuji: "雩祭",
     novelYeluo: "葉落",
@@ -57,7 +55,6 @@ const content = {
     apps: "Apps",
     novels: "Novels",
     appDumuchenglin: "BanyanDay",
-    appForyou: "For You",
     novelBeige: "碑歌",
     novelYuji: "雩祭",
     novelYeluo: "叶落",
@@ -132,12 +129,6 @@ const apps = [
     src: "/dumuchenglin-icon.jpg",
     external: true,
   },
-  {
-    key: "foryou" as const,
-    href: "https://foryou.arborm.co/",
-    src: "/foryou-icon.jpg",
-    external: true,
-  },
 ]
 
 const novels = [
@@ -191,7 +182,7 @@ export default function YokoContent({ initialLang }: { initialLang: LangKey }) {
   }
 
   const appName = (key: (typeof apps)[number]["key"]) =>
-    key === "dumuchenglin" ? t.appDumuchenglin : t.appForyou
+    ({ dumuchenglin: t.appDumuchenglin } as const)[key]
 
   const novelName = (key: (typeof novels)[number]["key"]) => {
     if (key === "beige") return t.novelBeige
