@@ -16,6 +16,7 @@ const content = {
       title: "隐私与条款",
       terms: "用户协议",
       policy: "隐私政策",
+      refund: "退款政策",
     },
     footer: {
       copyright: "2026 合肥阿博木科技有限公司 版权所有",
@@ -30,6 +31,7 @@ const content = {
       title: "隱私與條款",
       terms: "用戶協議",
       policy: "隱私政策",
+      refund: "退款政策",
     },
     footer: {
       copyright: "2026 合肥阿博木科技有限公司 版權所有",
@@ -44,6 +46,7 @@ const content = {
       title: "Privacy & Terms",
       terms: "Terms of Service",
       policy: "Privacy Policy",
+      refund: "Refund Policy",
     },
     footer: {
       copyright: "2026 Hefei ArborM Technology Co., Ltd. All rights reserved",
@@ -149,9 +152,16 @@ export default function DmclContent({ initialLang }: { initialLang: LangKey }) {
             </Link>
             <Link
               href="/dmcl/privacy"
-              className="group flex items-center justify-between px-5 py-4 hover:bg-stone-100/80 transition-colors rounded-b-2xl"
+              className="group flex items-center justify-between px-5 py-4 hover:bg-stone-100/80 transition-colors"
             >
               <span className="text-sm text-foreground/80">{t.privacy.policy}</span>
+              <ArrowUpRight className="w-4 h-4 text-foreground/20 group-hover:text-foreground/50 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </Link>
+            <Link
+              href="/dmcl/refund"
+              className="group flex items-center justify-between px-5 py-4 hover:bg-stone-100/80 transition-colors rounded-b-2xl"
+            >
+              <span className="text-sm text-foreground/80">{t.privacy.refund}</span>
               <ArrowUpRight className="w-4 h-4 text-foreground/20 group-hover:text-foreground/50 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
             </Link>
           </div>
